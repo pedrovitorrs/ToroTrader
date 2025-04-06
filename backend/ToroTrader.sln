@@ -19,7 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Application", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Application.Domain", "ToroTrader.Application\ToroTrader.Application.Domain\ToroTrader.Application.Domain.csproj", "{73C8B93A-48C1-42AE-A66B-7CFD948E161E}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8063021E-23C3-4435-8CF6-2C95BF52CA16}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToroTrader.Tests", "ToroTrader.Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Tests", "ToroTrader.Tests\ToroTrader.Tests\ToroTrader.Tests.csproj", "{37269A5D-571D-4B71-ACFE-B429BEDB5999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Infra.Messaging", "ToroTrader.Infra\ToroTrader.Infra.Messaging\ToroTrader.Infra.Messaging\ToroTrader.Infra.Messaging.csproj", "{311330E6-7E60-4231-B22C-31F60BDA76A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,14 @@ Global
 		{8063021E-23C3-4435-8CF6-2C95BF52CA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8063021E-23C3-4435-8CF6-2C95BF52CA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8063021E-23C3-4435-8CF6-2C95BF52CA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37269A5D-571D-4B71-ACFE-B429BEDB5999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37269A5D-571D-4B71-ACFE-B429BEDB5999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37269A5D-571D-4B71-ACFE-B429BEDB5999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37269A5D-571D-4B71-ACFE-B429BEDB5999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{311330E6-7E60-4231-B22C-31F60BDA76A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{311330E6-7E60-4231-B22C-31F60BDA76A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{311330E6-7E60-4231-B22C-31F60BDA76A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{311330E6-7E60-4231-B22C-31F60BDA76A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +72,10 @@ Global
 		{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9} = {C34DBF71-974F-4612-A730-255A57C728B1}
 		{0084B952-EF16-45D2-9486-F9447FF02D2F} = {548609B0-2F81-4587-BB06-00E541269EE2}
 		{73C8B93A-48C1-42AE-A66B-7CFD948E161E} = {548609B0-2F81-4587-BB06-00E541269EE2}
+		{37269A5D-571D-4B71-ACFE-B429BEDB5999} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{311330E6-7E60-4231-B22C-31F60BDA76A8} = {C34DBF71-974F-4612-A730-255A57C728B1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8464569-0E5D-4A5D-97D1-7457FC077558}
 	EndGlobalSection
 EndGlobal

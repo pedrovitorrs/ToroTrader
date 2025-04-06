@@ -1,0 +1,56 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a href="" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <i class='bx bxs-book-content' style="FONT-SIZE: 28px;color: #566a7f !important;"></i>
+      </span>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2"
+        style="text-align:center;text-transform:uppercase">DN</span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+  <ul class="menu-inner py-1">
+    <!-- Dashboard -->
+    <li class="menu-item" >
+      <a href="javascript:void(0);" routerLink="/home"  routerLinkActive="active" class="menu-link" appOpenInNewTab>
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Analytics">Dashboard</div>
+      </a>
+    </li>
+    <li class="menu-item" >
+      <a href="javascript:void(0);" routerLink="/clientes" routerLinkActive="active" class="menu-link" appOpenInNewTab>
+        <i class="menu-icon bx bxs-user"></i>
+        <div data-i18n="Analytics">Clientes</div>
+      </a>
+    </li>
+    <li class="menu-item" >
+      <a href="javascript:void(0);" routerLink="/servicos" routerLinkActive="active" class="menu-link" appOpenInNewTab>
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Analytics">Servicos</div>
+      </a>
+    </li>
+    <li class="menu-item" >
+      <a href="javascript:void(0);" routerLink="/eventos/atendimentos" routerLinkActive="active" class="menu-link" appOpenInNewTab>
+        <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+        <div data-i18n="Analytics">Eventos</div>
+      </a>
+    </li>
+    <li class="menu-item" >
+        <a href="javascript:void(0);" routerLink="/custos" routerLinkActive="active" appOpenInNewTab class="menu-link">
+          <i class='menu-icon tf-icons bx bx-dollar'></i>
+          <div data-i18n="Analytics">Custos</div>
+        </a>
+    </li>
+    <li class="menu-item" >
+      <a href="javascript:void(0);" routerLink="/recebidos" routerLinkActive="active" appOpenInNewTab class="menu-link">
+        <i class='menu-icon tf-icons bx bx-money'></i>
+        <div data-i18n="Analytics">Recebidos</div>
+      </a>
+    </li>
+  </ul>
+</aside>

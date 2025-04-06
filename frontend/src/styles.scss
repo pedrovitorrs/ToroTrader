@@ -1,0 +1,133 @@
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
+@import 'assets/theme/assets/vendor/css/core.css';
+@import 'assets/theme/assets/vendor/css/theme-default.css';
+@import 'assets/theme/assets/css/demo.css';
+@import 'assets/theme/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css';
+@import 'assets/theme/assets/vendor/css/pages/page-auth.css';
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field:not(.mat-mdc-paginator-page-size-select) {
+    width: 100% !important;
+}
+
+.snack-background-red{
+    z-index: 2000 !important;
+    div.mdc-snackbar__surface  {
+        width: 40vw !important;
+        background-color: rgb(178, 25, 25, 1) !important;
+        color: white !important ;
+    }
+    div  {
+        color: white !important;
+    }
+    span {
+        color: white !important;
+    }
+}
+.snack-background-green{
+    z-index: 2000 !important;
+    width: 40vw !important;
+    div.mdc-snackbar__surface  {
+        background: rgb(29, 102, 29) !important;
+        color: white !important;
+    }
+    div {
+        color: white !important;
+    }
+    span {
+        color: white !important;
+    }
+}
+
+
+.botoes {
+    text-align: right;
+
+    button, a {
+        min-width: 120px;
+        min-height: 40px;
+    }
+
+    button, a:not(:first-child) { 
+        margin-left: 4px;
+    } 
+
+    button, a:not(:last-child) { 
+        margin-right: 4px;
+    } 
+}
+
+.table-responsive {
+    border-top: 0.7px solid #ccc;
+    border-left: 0.7px solid #ccc;
+    border-right: 0.7px solid #ccc;
+}
+
+.table > thead {
+    vertical-align: bottom;
+    background-color: #3f51b5;
+    tr {
+        th {
+            color: white !important;
+        }
+    }
+
+}
+
+
+.layout-navbar-fixed body:not(.modal-open) .layout-content-navbar .layout-navbar, .layout-menu-fixed body:not(.modal-open) .layout-content-navbar .layout-navbar, .layout-menu-fixed-offcanvas body:not(.modal-open) .layout-content-navbar .layout-navbar {
+    z-index: 1;
+}
+
+.form-item {
+    margin-bottom: 30px;
+}
+
+.container-xxl {
+    max-width: none !important;
+}
+
+.cdk-overlay-container { 
+    z-index: 1100 !important;
+}
+  
+.header_novo {
+    background-color: #2c3e50 !important;
+    text-transform: uppercase !important;
+    color: white;
+}
+
+.fc-toolbar-title {
+    text-transform: uppercase !important;
+}
+
+.fc-day-sun {
+    width: 50px !important;
+}
+
+.fc-daygrid-day.fc-day-today {
+    background-color: rgb(105 108 255 / 14%) !important;
+}
+
+.dropdown-menu {
+    z-index: 2000 !important;
+}
+
+.fc-timegrid-event .fc-event-main {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 0px;
+}
+
+
+.custom-popover2 {
+    height: 1002px !important;
+}
