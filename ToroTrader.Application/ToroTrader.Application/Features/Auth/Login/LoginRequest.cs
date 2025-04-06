@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel;
 
 namespace ToroTrader.Application.Features.Auth.Login
 {
-    public class LoginResponse
+    public class LoginRequest
     {
-        public string accessToken { get; set; }
-        public DateTime expiresIn { get; set; }
+        [DefaultValue("00001")]
+        public string accountId { get; set; }
+
+        [DefaultValue("12454")]
+        public string clientId { get; set; }
     }
 }

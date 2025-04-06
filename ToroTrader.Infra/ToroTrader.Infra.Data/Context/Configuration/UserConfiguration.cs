@@ -44,7 +44,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     public static void DefaultData(EntityTypeBuilder<User> builder)
     {
         var user = new User(name: "Peter Investidor",
-                balance: 5000,
+                balance: 100000,
                 documentNumber: "01234567809",
                 accountId: "00001",
                 clientId: "12454");
