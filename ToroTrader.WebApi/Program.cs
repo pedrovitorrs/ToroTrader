@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
 using System.Text;
 using ToroTrader.Infra.IoC;
+using ToroTrader.Infra.IoC.Extension;
 using ToroTrader.WebApi.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,5 +48,7 @@ app.MapGroup("api/v1/")
     .AddAuthEndpoints("/auth", "Auth")
     .AddProductEndpoints("/products", "Products")
     .AddOrderEndpoints("/orders", "Orders");
+
+app.UseRabbitListener();
 
 app.Run();

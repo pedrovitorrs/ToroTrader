@@ -15,6 +15,10 @@
     <ProjectReference Include="..\..\ToroTrader.Application\ToroTrader.Application.Domain\ToroTrader.Application.Domain.csproj" />
     <ProjectReference Include="..\..\ToroTrader.Application\ToroTrader.Application\ToroTrader.Application.csproj" />
     <ProjectReference Include="..\ToroTrader.Infra.Data\ToroTrader.Infra.Data.csproj" />
+    <ProjectReference Include="..\ToroTrader.Infra.Messaging\ToroTrader.Infra.Messaging\ToroTrader.Infra.Messaging.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="EasyNetQ" Version="3.7.1" />
+	</ItemGroup>
 
 </Project>

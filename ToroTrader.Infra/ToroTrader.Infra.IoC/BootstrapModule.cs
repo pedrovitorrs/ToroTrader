@@ -8,11 +8,17 @@ using ToroTrader.Application.Domain.Structure.JWT;
 using ToroTrader.Infra.Data;
 using ToroTrader.Infra.IoC.JWT;
 using ToroTrader.Infra.IoC.OpenAPI;
+using EasyNetQ;
+using ToroTrader.Application.Events.Interfaces;
+using ToroTrader.Application.Events;
+using ToroTrader.Infra.Messaging;
+using ToroTrader.Application.Domain.Events;
 
 namespace ToroTrader.Infra.IoC;
 
 public static class BootstrapModule
 {
+
     public static void AddInfraStructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddOpenApi(options =>
@@ -58,5 +64,12 @@ public static class BootstrapModule
         services.RegisterUseCases();
 
         services.RegisterInfraData(configuration);
+
+        services.AddScoped<IEventPublisher<PublisherEvent>, CreateOrderEventPublisher<PublisherEvent>>();
+
+        services.AddTransient<IEventConsumer<PublisherEvent, Guid>, CreateOrderEventConsumer>();
+        services.AddScoped<IConsumerSubscriptions, ConsumerSubscriptions>();
+        //services.AddScoped<IConsumerSubscriptions, ConsumerSubscriptions>();
+        services.AddSingleton(RabbitHutch.CreateBus("host=localhost;username=rabbitmq;password=rabbitmq;virtualHost=/"));
     }
 }
