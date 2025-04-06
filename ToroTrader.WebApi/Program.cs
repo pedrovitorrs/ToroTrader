@@ -45,6 +45,7 @@ app.MapGroup("api/v1/")
     .WithOpenApi()
     .AddUserEndpoints("/users", "Users")
     .AddAuthEndpoints("/auth", "Auth")
-    .AddProductEndpoints("/products", "Products");
+    .AddProductEndpoints("/products", "Products")
+    .AddOrderEndpoints("/orders", "Orders");
 
 app.Run();

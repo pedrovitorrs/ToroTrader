@@ -8,6 +8,7 @@ public class ToroTraderContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<Order> Orders { get; set; }
 
     public ToroTraderContext(DbContextOptions<ToroTraderContext> options) : base(options)
     {
