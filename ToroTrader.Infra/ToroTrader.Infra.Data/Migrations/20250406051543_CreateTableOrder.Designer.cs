@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ToroTrader.Infra.Data.Context;
@@ -11,9 +12,11 @@ using ToroTrader.Infra.Data.Context;
 namespace ToroTrader.Infra.Data.Migrations
 {
     [DbContext(typeof(ToroTraderContext))]
-    partial class ToroTraderContextModelSnapshot : ModelSnapshot
+    [Migration("20250406051543_CreateTableOrder")]
+    partial class CreateTableOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

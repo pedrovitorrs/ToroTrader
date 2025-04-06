@@ -4,6 +4,7 @@ using ToroTrader.Application.Domain.Entities.Base;
 using ToroTrader.Application.Domain.Structure.Pagination;
 using ToroTrader.Application.Domain.Structure.Repositories;
 using ToroTrader.Infra.Data.Context;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ToroTrader.Infra.Data.Context.Repository;
 
@@ -75,9 +76,14 @@ public class Repository<TEntity>(ToroTraderContext _context) : IRepository<TEnti
         return await _context.Set<TEntity>().FirstOrDefaultAsync(where, cancellationToken);
     }
 
-    public async Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate)
+    public async Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
     {
         var elements = _context.Set<TEntity>().AsNoTracking().Where(predicate);
+
+        if (orderBy != null)
+        {
+            elements = orderBy(elements);
+        }
 
         var count = await elements.CountAsync();
 

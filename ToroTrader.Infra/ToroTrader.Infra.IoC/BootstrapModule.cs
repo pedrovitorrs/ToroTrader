@@ -52,6 +52,8 @@ public static class BootstrapModule
         services.AddScoped<ITokenService, TokenService>();
 
         services.AddScoped<IPasswordHash, PasswordHash>();
+        services.AddHttpContextAccessor();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         services.RegisterUseCases();
 

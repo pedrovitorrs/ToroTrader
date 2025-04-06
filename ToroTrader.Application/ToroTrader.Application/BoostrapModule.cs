@@ -2,7 +2,9 @@
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using ToroTrader.Application.Features.Auth.Login;
+using ToroTrader.Application.Features.Orders.CreateOrder;
 using ToroTrader.Application.Features.Products.GetProducts;
+using ToroTrader.Application.Features.Products.GetProductsTopTraded;
 using ToroTrader.Application.Features.Users.CreateUser;
 using ToroTrader.Infra.IoC.FluentValidation.User;
 
@@ -17,6 +19,8 @@ public static class BoostrapModule
         services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
         services.AddScoped<ILoginUseCase, LoginUseCase>();
         services.AddScoped<IGetProductsHandler, GetProductsHandler>();
+        services.AddScoped<IGetProductsTopTradedHandler, GetProductsTopTradedHandler>();
+        services.AddScoped<ICreateOrderUseCase, CreateOrderUseCase>();
 
         services.AddFluentValidationAutoValidation(); // Para validação automática no binding do body
         services.AddValidatorsFromAssemblyContaining<CreateUserRequestValidator>();
