@@ -1,0 +1,6 @@
+@ToroTrader.WebApi_HostAddress = http://localhost:5199
+
+GET {{ToroTrader.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
+	<PackageReference Include="Scalar.AspNetCore" Version="2.0.12" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\ToroTrader.Application\ToroTrader.Application.Domain\ToroTrader.Application.Domain.csproj" />
+    <ProjectReference Include="..\..\ToroTrader.Application\ToroTrader.Application\ToroTrader.Application.csproj" />
+    <ProjectReference Include="..\ToroTrader.Infra.Data\ToroTrader.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

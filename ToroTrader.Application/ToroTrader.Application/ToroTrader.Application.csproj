@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\Users\GetUsers\**" />
+    <Compile Remove="Features\Users\UpdatePassword\**" />
+    <EmbeddedResource Remove="Features\Users\GetUsers\**" />
+    <EmbeddedResource Remove="Features\Users\UpdatePassword\**" />
+    <None Remove="Features\Users\GetUsers\**" />
+    <None Remove="Features\Users\UpdatePassword\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+	<PackageReference PrivateAssets="none" Include="FluentValidation.AspNetCore" Version="11.3.0" />
+	<PackageReference PrivateAssets="none" Include="FluentValidation" Version="11.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToroTrader.Application.Domain\ToroTrader.Application.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

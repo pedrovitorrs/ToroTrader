@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToroTrader.Application", "ToroTrader.Application", "{548609B0-2F81-4587-BB06-00E541269EE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToroTrader.WebApi", "ToroTrader.WebApi", "{93F68184-73A2-4C38-A6A9-5F14884578D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.WebApi", "ToroTrader.WebApi\ToroTrader.WebApi.csproj", "{3AE91FB5-F38E-4A64-80A7-B5BD0B292A65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToroTrader.Infra", "ToroTrader.Infra", "{C34DBF71-974F-4612-A730-255A57C728B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Infra.Data", "ToroTrader.Infra\ToroTrader.Infra.Data\ToroTrader.Infra.Data.csproj", "{97E6F359-8551-493C-B095-1D25DEA17C9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Infra.IoC", "ToroTrader.Infra\ToroTrader.Infra.IoC\ToroTrader.Infra.IoC.csproj", "{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Application", "ToroTrader.Application\ToroTrader.Application\ToroTrader.Application.csproj", "{0084B952-EF16-45D2-9486-F9447FF02D2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToroTrader.Application.Domain", "ToroTrader.Application\ToroTrader.Application.Domain\ToroTrader.Application.Domain.csproj", "{73C8B93A-48C1-42AE-A66B-7CFD948E161E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8063021E-23C3-4435-8CF6-2C95BF52CA16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AE91FB5-F38E-4A64-80A7-B5BD0B292A65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE91FB5-F38E-4A64-80A7-B5BD0B292A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE91FB5-F38E-4A64-80A7-B5BD0B292A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE91FB5-F38E-4A64-80A7-B5BD0B292A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E6F359-8551-493C-B095-1D25DEA17C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E6F359-8551-493C-B095-1D25DEA17C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E6F359-8551-493C-B095-1D25DEA17C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E6F359-8551-493C-B095-1D25DEA17C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0084B952-EF16-45D2-9486-F9447FF02D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0084B952-EF16-45D2-9486-F9447FF02D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0084B952-EF16-45D2-9486-F9447FF02D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0084B952-EF16-45D2-9486-F9447FF02D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73C8B93A-48C1-42AE-A66B-7CFD948E161E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C8B93A-48C1-42AE-A66B-7CFD948E161E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C8B93A-48C1-42AE-A66B-7CFD948E161E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C8B93A-48C1-42AE-A66B-7CFD948E161E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8063021E-23C3-4435-8CF6-2C95BF52CA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8063021E-23C3-4435-8CF6-2C95BF52CA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8063021E-23C3-4435-8CF6-2C95BF52CA16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3AE91FB5-F38E-4A64-80A7-B5BD0B292A65} = {93F68184-73A2-4C38-A6A9-5F14884578D0}
+		{97E6F359-8551-493C-B095-1D25DEA17C9D} = {C34DBF71-974F-4612-A730-255A57C728B1}
+		{E9BE14B6-15A0-46B9-8D4D-FEBBA0F70FF9} = {C34DBF71-974F-4612-A730-255A57C728B1}
+		{0084B952-EF16-45D2-9486-F9447FF02D2F} = {548609B0-2F81-4587-BB06-00E541269EE2}
+		{73C8B93A-48C1-42AE-A66B-7CFD948E161E} = {548609B0-2F81-4587-BB06-00E541269EE2}
+	EndGlobalSection
+EndGlobal
