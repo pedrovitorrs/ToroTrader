@@ -12,11 +12,11 @@ namespace ToroTrader.Application.Features.Products.GetProductsTopTraded
     {
 
         [DefaultValue(1)]
-        [FromRoute(Name = "pageNumber")]
+        [FromQuery(Name = "pageNumber")]
         public int pageNumber { get; set; }
 
         [DefaultValue(10)]
-        [FromRoute(Name = "pageSize")]
+        [FromQuery(Name = "pageSize")]
         public int pageSize { get; set; }
     }
 }

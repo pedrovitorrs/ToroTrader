@@ -18,8 +18,8 @@ public static class UserEnpoints
             .AllowAnonymous()
             .Produces<object>(StatusCodes.Status200OK);
 
-        usergroup.MapGet("{pageNumber}/{pageSize}",
-            ([FromServices] ICreateUserUseCase useCase, [FromRoute] int pageNumber, [FromRoute] int pageSize, [FromQuery] string? name) =>
+        usergroup.MapGet("",
+            ([FromServices] ICreateUserUseCase useCase, [FromQuery] int pageNumber, [FromQuery] int pageSize, [FromQuery] string? name) =>
             {
                 return Results.Ok(null);
             })

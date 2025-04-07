@@ -20,7 +20,7 @@ builder.Services.AddInfraStructure(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

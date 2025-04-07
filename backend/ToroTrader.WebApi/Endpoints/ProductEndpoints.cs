@@ -10,7 +10,7 @@ namespace ToroTrader.WebApi.Endpoints
         {
             var productroup = app.MapGroup(route).WithTags(tag);
 
-            productroup.MapGet("{pageNumber}/{pageSize}",
+            productroup.MapGet("",
                 async ([FromServices] IGetProductsHandler handler, [AsParameters] GetProductsQuery getProductsQuery) =>
                 {
                     return Results.Ok(await handler.HandleAsync(getProductsQuery));
@@ -18,7 +18,7 @@ namespace ToroTrader.WebApi.Endpoints
                 .RequireAuthorization()
                 .Produces<object>(StatusCodes.Status200OK);
 
-            productroup.MapGet("top-traded/{pageNumber}/{pageSize}",
+            productroup.MapGet("top-traded",
                 async ([FromServices] IGetProductsTopTradedHandler handler, [AsParameters] GetProductsTopTradedQuery getProductsQuery) =>
                 {
                     return Results.Ok(await handler.HandleAsync(getProductsQuery));

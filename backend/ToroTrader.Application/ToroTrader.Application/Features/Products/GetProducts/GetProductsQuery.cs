@@ -12,12 +12,12 @@ namespace ToroTrader.Application.Features.Products.GetProducts
     {
 
         [DefaultValue(1)]
-        [FromRoute(Name = "pageNumber")]
-        public int pageNumber { get; set; }
+        [FromQuery(Name = "pageNumber")]
+        public int pageNumber { get; set; } = 1;
 
         [DefaultValue(10)]
-        [FromRoute(Name = "pageSize")]
-        public int pageSize { get; set; }
+        [FromQuery(Name = "pageSize")]
+        public int pageSize { get; set; } = 10;
 
         [FromQuery(Name = "bondAsset")]
         public string BondAsset { get; set; }

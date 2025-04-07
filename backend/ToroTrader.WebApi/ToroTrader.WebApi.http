@@ -4,3 +4,8 @@ GET {{ToroTrader.WebApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{ToroTrader.WebApi_HostAddress}}/api/v1/products?page=1&size=10 HTTP/2
+Host: localhost:7172
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyLk5hbWUiOiJQZXRlciBJbnZlc3RpZG9yIiwiVXNlci5BY2NvdW50SWQiOiIwMDAwMSIsIlVzZXIuQ2xpZW50SWQiOiIxMjQ1NCIsIlVzZXIuSWQiOiJmOTdlNTY1ZC0wOGFmLTQyODEtYmMxMS1jMDIwNmVhZTA2ZmEiLCJuYmYiOjE3NDM5OTM3MzYsImV4cCI6MTc0NDAwMDkzNiwiaWF0IjoxNzQzOTkzNzM2fQ.f8-IIYt2RlirMakn_Z-Fy8Xf9QQS7dYFMUyrMUXBdns
