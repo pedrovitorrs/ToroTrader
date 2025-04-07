@@ -16,9 +16,22 @@ namespace ToroTrader.Application.Features.Orders.GetOrdersByUser
         public decimal UnitPrice { get; set; }
     }
 
+    public class GetOrdersByUser
+    {
+        public Guid UserId { get; set; }
+        public string AccountId { get; set; }
+
+        public string ClientId { get; set; }
+
+        public decimal Balance { get; set; }
+
+        public string DocumentNumber { get; set; }
+    }
+
     public class GetOrdersByUsersResponse
     {
         public List<GetOrdersByUserResponse> Items { get; set; } = [];
+        public GetOrdersByUser User { get; set; } = null!;
         public int TotalElements { get; set; }
         public int PageNumber { get; set; }
         public int PageSize { get; set; }

@@ -30,9 +30,18 @@ namespace ToroTrader.Application.Features.Orders.GetOrdersByUser
                 UnitPrice = order.Product.UnitPrice
             }).ToList();
 
+            var user = new GetOrdersByUser {
+                UserId = pagedResult.Items?.FirstOrDefault()?.UserId ?? Guid.Empty,
+                AccountId = pagedResult.Items?.FirstOrDefault()?.User?.AccountId,
+                ClientId = pagedResult.Items?.FirstOrDefault()?.User?.ClientId,
+                Balance = pagedResult.Items?.FirstOrDefault()?.User?.Balance ?? 0,
+                DocumentNumber = pagedResult.Items?.FirstOrDefault()?.User?.DocumentNumber
+            };
+
             return new GetOrdersByUsersResponse
             {
                 Items = items,
+                User = user,
                 PageNumber = pagedResult.PageNumber,
                 PageSize = pagedResult.PageSize,
                 TotalElements = pagedResult.TotalElements
