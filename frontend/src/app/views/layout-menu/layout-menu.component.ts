@@ -51,9 +51,9 @@ export class LayoutMenuComponent  implements OnInit, AfterViewInit{
     this.router.navigateByUrl('/dashboard');
   }
 
-  public orders(): void {
+  public products(): void {
     //this.authorization.logOut();
-    this.router.navigateByUrl('/auth/login');
+    this.router.navigateByUrl('/products');
   }
 }
 

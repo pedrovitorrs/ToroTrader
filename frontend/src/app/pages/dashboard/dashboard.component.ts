@@ -11,27 +11,7 @@ import { AssetsTableComponent } from './components/assets-table/assets-table.com
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  public date: Date = new Date();
-  public totalizador: TotalizadoresResponse = {
-    agendados: 10,
-    concluidos: 20,
-    lucro: 20,
-    receber: 3
-  };
 
   public constructor() {
   }
-
-  onPageChange(event: any) {
-    const page = event.page + 1; // começa do 0
-    const size = event.rows;
-    //this.getServicos({ pageIndex: page, pageSize: size });
-  }
-}
-
-export interface TotalizadoresResponse {
-  agendados: number,
-  concluidos: number,
-  lucro: number,
-  receber: number
 }

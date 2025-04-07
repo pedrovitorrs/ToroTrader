@@ -1,42 +1,47 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginatorModule } from 'primeng/paginator';
-import { AsyncPipe } from '@angular/common';
-import { NgFor } from '@angular/common';
 import { Asset, AssetsService } from '../../../../core/services/assets.service';
+import { TableModule } from 'primeng/table';
+import { BasePaginatedComponent } from '../../../base/BasePaginatedComponent';
 
 @Component({
   selector: 'app-assets-table',
   standalone: true,
-  imports: [CommonModule, PaginatorModule,  NgFor],
+  imports: [CommonModule, PaginatorModule,  TableModule],
   templateUrl: './assets-table.component.html',
 })
-export class AssetsTableComponent {
+export class AssetsTableComponent extends BasePaginatedComponent<Asset>{
   private assetsService = inject(AssetsService);
 
-  // signals para armazenar paginação e dados
-  pageNumber = signal(1);
-  pageSize = signal(10);
-
-  items? = signal<Asset[]>([]);
-  totalElements? = signal(0);
-
   constructor() {
-    // Effect para buscar dados ao iniciar ou trocar página
+    super();
     effect(() => {
-      this.fetchAssets();
+      this.fetchData();
     });
   }
 
-  fetchAssets() {
+  fetchData() {
     this.assetsService.getAssets(this.pageNumber(), this.pageSize()).subscribe((res) => {
       this.items?.set(res.items ?? []);
       this.totalElements?.set(res.totalElements ?? 0);
+
+      console.log(res.totalElements)
     });
   }
 
-  handlePageChange(event: any) {
-    this.pageNumber.set(event.page + 1);
-    this.pageSize.set(event.rows);
+  getStatusClass(status: string): string {
+    switch (status) {
+      case 'Pendente':
+        return 'badge bg-warning text-dark'; // amarelo
+      case 'Concluido':
+        return 'badge bg-success'; // verde
+      case 'Cancelado':
+        return 'badge bg-secondary'; // cinza
+      case 'Erro':
+        return 'badge bg-danger'; // vermelho
+      default:
+        return 'badge bg-light text-dark'; // neutro
+    }
   }
 }

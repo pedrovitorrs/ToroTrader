@@ -1,0 +1,24 @@
+<p-dialog
+  header="Comprar Produto"
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  (onHide)="closeDialog()"
+>
+  <div class="p-fluid">
+    <div class="mb-3">
+      <label for="quantity">Quantidade</label>
+      <input
+        type="number"
+        id="quantity"
+        [(ngModel)]="quantity"
+        class="form-control"
+        min="1"
+        [max]="selectedProduct?.stock || 1"
+      />
+    </div>
+    <div class="text-right">
+      <button class="btn btn-primary" (click)="confirmBuy()">Confirmar Compra</button>
+    </div>
+  </div>
+</p-dialog>
