@@ -5,12 +5,12 @@ import { catchError, filter, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private url: string = "http://localhost:5199";
+  private baseUrl: string = "https://localhost:7172";
   constructor(private http: HttpClient) {}
 
 
   login(accountId: string, clientId: string): Observable<any> {
-    var teste = this.http.post(`https://localhost:7172/api/v1/auth`, {
+    var teste = this.http.post(`${this.baseUrl}/api/v1/auth`, {
       accountId,
       clientId
     }).pipe(
@@ -24,9 +24,5 @@ export class AuthService {
 
     console.log(teste);
     return teste;
-  }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
   }
 }

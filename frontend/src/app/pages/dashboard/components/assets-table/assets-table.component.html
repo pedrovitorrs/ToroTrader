@@ -1,0 +1,47 @@
+
+  <div class="card mb-12">
+    <h5 class="card-header">Table Basic</h5>
+    <div class="card-body">
+    <div class="table-responsive text-nowrap">
+        <table class="table ">
+            <thead class="table">
+                <tr>
+                    <th colspan="2">
+                        Bond Asset
+                    </th>
+                    <th colspan="2">
+                        Index
+                    </th>
+                    <th colspan="2">
+                        Quantity
+                    </th>
+                    <th colspan="2">
+                        Status
+                    </th>
+                    <th colspan="2">
+                        Unity Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items?.() || []">
+                    <td colspan="2">{{ item?.bondAsset }}</td>
+                    <td colspan="2">{{ item?.index }}</td>
+                    <td colspan="2">{{ item?.quantity }}</td>
+                    <td colspan="2">{{ item?.status }}</td>
+                    <td colspan="2">{{ item?.unitPrice }}</td>
+                  </tr>
+            </tbody>
+        </table>
+        <div  class="pb-2">
+            <p-paginator 
+                [rows]="10"
+                [totalRecords]="20"
+                [first]="1"
+                (onPageChange)="handlePageChange($event)">>
+            </p-paginator>
+        </div>
+    </div>
+</div>
+</div>
+  

@@ -4,6 +4,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import * as AuthActions from './auth.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { TokenService } from '../../../shared/TokenService';
 
 @Injectable()
 export class AuthEffects {
@@ -14,6 +15,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private tokenService: TokenService,
     private router: Router
   ) {
     this.login$ = createEffect(() =>
@@ -45,7 +47,9 @@ export class AuthEffects {
           ofType(AuthActions.loginSuccess),
           tap(({ token }) => {
             console.log(token);
-            localStorage.setItem('token', token);
+            //localStorage.setItem('token', token);
+            tokenService.setToken(token);
+
             this.router.navigate(['/dashboard']);
           })
         ),
