@@ -46,7 +46,6 @@ export class AuthEffects {
         this.actions$.pipe(
           ofType(AuthActions.loginSuccess),
           tap(({ token }) => {
-            console.log(token);
             //localStorage.setItem('token', token);
             tokenService.setToken(token);
 

@@ -22,7 +22,6 @@ export class AuthService {
       take(1)
     );
 
-    console.log(teste);
     return teste;
   }
 }

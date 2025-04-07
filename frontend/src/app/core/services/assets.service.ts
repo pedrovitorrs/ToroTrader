@@ -20,7 +20,6 @@ export class AssetsService {
     const headers = new HttpHeaders()
     .set("Authorization", `Bearer ${token}`);
 
-    console.log(headers)
     return this.http.get<AssetsResponse>(
       `${this.baseUrl}/api/v1/orders/by-user?pageNumber=${page}&pageSize=${size}`,
       { headers }

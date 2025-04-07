@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ProductsComponent } from './pages/products/products.component';
+import { TrendingProductsTableComponent } from './pages/products/components/trending-products-table/trending-products-table.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,11 @@ export const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'trending-products',
+    component: TrendingProductsTableComponent,
     canActivate: [AuthGuard],
   },
   {

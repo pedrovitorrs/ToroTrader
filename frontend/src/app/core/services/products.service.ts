@@ -26,7 +26,6 @@ export class ProductsService {
       `${this.baseUrl}/api/v1/products?pageNumber=${page}&pageSize=${size}`,
       headers
     );
-    console.log(teste)
     return teste;
   }
 
