@@ -57,7 +57,9 @@ export class ProductsTableComponent extends BasePaginatedComponent<Product>{
     }
 
     public trendingProducts(): void {
-      //this.authorization.logOut();
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigate([], {
+        queryParams: { trending: true },
+        queryParamsHandling: 'merge'
+      });
     }
 }
