@@ -23,6 +23,7 @@ public class TokenService(IConfiguration configuration) : ITokenService
                 new Claim("User.AccountId", user.AccountId),
                 new Claim("User.ClientId", user.ClientId),
                 new Claim("User.Id", user.Id.ToString()),
+                new Claim("User.DocumentNumber", user.DocumentNumber.ToString()),
             }),
             Expires = DateTime.UtcNow.AddMinutes(int.Parse(configuration["Jwt:ExpireInMinutes"]?.ToString())),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),

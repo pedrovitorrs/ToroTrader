@@ -25,7 +25,8 @@ namespace ToroTrader.Application.Features.Products.GetProductsTopTraded
                 pageNumber: request.pageNumber,
                 pageSize: request.pageSize,
                 predicate: p =>
-                    topProductIds.Contains(p.Id)
+                    topProductIds.Contains(p.Id),
+                orderBy: u => u.OrderByDescending(p => p.Tax)
             );
 
             return pagedResult;

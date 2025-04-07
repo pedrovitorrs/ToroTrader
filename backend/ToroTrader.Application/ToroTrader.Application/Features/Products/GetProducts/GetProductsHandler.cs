@@ -12,7 +12,8 @@ namespace ToroTrader.Application.Features.Products.GetProducts
             var pagedResult = await productRepository.ToListAsync(
                 pageNumber: request.pageNumber,
                 pageSize: request.pageSize,
-                predicate: u => string.IsNullOrEmpty(request.BondAsset) || u.BondAsset.Contains(request.BondAsset)
+                predicate: u => string.IsNullOrEmpty(request.BondAsset) || u.BondAsset.Contains(request.BondAsset),
+                orderBy: u => u.OrderByDescending(p => p.Tax)
             );
 
             return pagedResult;
