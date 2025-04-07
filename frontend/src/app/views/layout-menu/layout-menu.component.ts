@@ -46,5 +46,14 @@ export class LayoutMenuComponent  implements OnInit, AfterViewInit{
 
   public ngOnInit(): void {
   }
+
+  public dashboard(): void {
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  public orders(): void {
+    //this.authorization.logOut();
+    this.router.navigateByUrl('/auth/login');
+  }
 }
 
