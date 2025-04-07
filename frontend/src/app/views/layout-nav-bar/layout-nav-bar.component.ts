@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { TokenService } from '../../shared/TokenService';
+import { TokenModel } from '../../shared/TokenModel';
 //import { AuthorizationService } from 'src/app/core/services/authorization.services';
 
 @Component({
@@ -18,16 +20,27 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./layout-nav-bar.component.scss'],
 })
 export class LayoutNavBarComponent implements OnInit {
-  public token!: any;
+  public token!: TokenModel;
+  public userModel!:UserModel;
+
   public constructor(
     private router: Router,
-    //private authorization: AuthorizationService
+    private tokenService: TokenService
   ) { }
 
   public ngOnInit(): void {
-    //this.authorization.getToken().subscribe((token) => {
-    //  this.token = token;
-    //});
+    this.tokenService.dadosToken$.subscribe((token) => {
+      if (token) {
+        this.userModel = {
+          name: token['User.Name'],
+          documentNumber: token['User.DocumentNumber'],
+          accountId: token['User.AccountId'],
+          clientId: token['User.ClientId']
+        };
+      }
+
+      console.log('Token recebido no componente:', token);
+    });
   }
 
   public signOut(): void {
@@ -35,3 +48,10 @@ export class LayoutNavBarComponent implements OnInit {
     this.router.navigateByUrl('/auth');
   }
 }
+
+interface UserModel {
+  name: string
+  documentNumber: string,
+  accountId: string,
+  clientId: string
+};

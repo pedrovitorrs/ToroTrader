@@ -11,6 +11,7 @@ export interface Order {
     userId: string;
     userName: string;
     email: string;
+    balance: number;
   }
   
   export interface OrderResponse {

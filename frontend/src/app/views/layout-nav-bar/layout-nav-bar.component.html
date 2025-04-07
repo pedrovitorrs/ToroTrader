@@ -7,10 +7,6 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <div class="navbar-nav">
-            Toro Trader
-        </div>
-
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center" style="display:none !important">
@@ -21,18 +17,27 @@
         </div>
         <!-- /Search -->
 
-        <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <!-- Place this tag where you want the button to render. -->
-            <li class="nav-item lh-1 me-3"></li>
-
-            <button mat-button class="nav-item" [matMenuTriggerFor]="beforeMenu">
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <div class="navbar-nav align-items-center me-4">
+              <div class="me-3 d-none d-md-block">
+                <div class="fw-bold">{{ userModel.name }}</div>
+                <small class="text-muted">Documento: {{ userModel.documentNumber }}</small>
+                <small class="text-muted"> / Conta: {{ userModel.accountId }}</small>
+              </div>
+            </div>
+          
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <li class="nav-item lh-1 me-3"></li>
+          
+              <button mat-button class="nav-item" [matMenuTriggerFor]="beforeMenu">
                 <div class="avatar avatar-online">
-                    <img src="../../../../theme/assets/img/avatars/5.png" alt class="w-px-40 h-auto rounded-circle" />
+                  <img src="../../../../theme/assets/img/avatars/5.png" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
-            </button>
-            <mat-menu #beforeMenu="matMenu" xPosition="before">
+              </button>
+              <mat-menu #beforeMenu="matMenu" xPosition="before">
                 <button mat-menu-item (click)="signOut()"><mat-icon>exit_to_app</mat-icon> Log Out</button>
-            </mat-menu>
-        </ul>
+              </mat-menu>
+            </ul>
+          </div>
     </div>
 </nav>
