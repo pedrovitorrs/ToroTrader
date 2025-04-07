@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../../../core/services/products.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
-import { OrdersService } from '../../../../core/services/orders.service';
+import { OrdersService } from '../../../../core/services/Orders/orders.service';
+import { Product } from '../../../../core/services/Products/products.service';
 
 @Component({
   selector: 'app-buy-dialog',

@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { PaginatorModule } from 'primeng/paginator';
-import { LayoutComponent } from '../../../../views/layout/layout.component';
-import { Product, ProductsService } from '../../../../core/services/products.service';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +8,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { BuyDialogComponent } from '../buy-dialog/buy-dialog.component';
 import { Router } from '@angular/router';
 import { BasePaginatedComponent } from '../../../base/BasePaginatedComponent';
+import { Product, ProductsService } from '../../../../core/services/Products/products.service';
 
 
 @Component({

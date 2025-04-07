@@ -1,7 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { LayoutComponent } from '../../views/layout/layout.component';
 import { PaginatorModule } from 'primeng/paginator';
-import { Asset } from '../../core/services/assets.service';
 import { CommonModule, NgIf } from '@angular/common';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { ActivatedRoute } from '@angular/router';

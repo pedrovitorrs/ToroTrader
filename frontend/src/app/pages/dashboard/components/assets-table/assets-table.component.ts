@@ -1,9 +1,10 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginatorModule } from 'primeng/paginator';
-import { Asset, AssetsService } from '../../../../core/services/assets.service';
 import { TableModule } from 'primeng/table';
 import { BasePaginatedComponent } from '../../../base/BasePaginatedComponent';
+import { OrdersService } from '../../../../core/services/Orders/orders.service';
+import { Order } from '../../../../core/services/Orders/OrdersResponse';
 
 @Component({
   selector: 'app-assets-table',
@@ -11,8 +12,8 @@ import { BasePaginatedComponent } from '../../../base/BasePaginatedComponent';
   imports: [CommonModule, PaginatorModule,  TableModule],
   templateUrl: './assets-table.component.html',
 })
-export class AssetsTableComponent extends BasePaginatedComponent<Asset>{
-  private assetsService = inject(AssetsService);
+export class AssetsTableComponent extends BasePaginatedComponent<Order>{
+  private assetsService = inject(OrdersService);
 
   constructor() {
     super();
@@ -22,7 +23,7 @@ export class AssetsTableComponent extends BasePaginatedComponent<Asset>{
   }
 
   fetchData() {
-    this.assetsService.getAssets(this.pageNumber(), this.pageSize()).subscribe((res) => {
+    this.assetsService.getOrdersByUser(this.pageNumber(), this.pageSize()).subscribe((res) => {
       this.items?.set(res.items ?? []);
       this.totalElements?.set(res.totalElements ?? 0);
 

@@ -1,5 +1,4 @@
 import { Component, effect, inject } from '@angular/core';
-import { Product, ProductsService } from '../../../../core/services/products.service';
 import { Router } from '@angular/router';
 import { BasePaginatedComponent } from '../../../base/BasePaginatedComponent';
 import { BuyDialogComponent } from '../buy-dialog/buy-dialog.component';
@@ -9,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { Product, ProductsService } from '../../../../core/services/Products/products.service';
 
 @Component({
   selector: 'app-trending-products-table',
