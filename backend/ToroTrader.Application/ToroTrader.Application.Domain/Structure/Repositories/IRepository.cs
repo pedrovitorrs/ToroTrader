@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using ToroTrader.Application.Domain.Entities;
 using ToroTrader.Application.Domain.Entities.Base;
 using ToroTrader.Application.Domain.Structure.Pagination;
 
@@ -17,7 +18,7 @@ namespace ToroTrader.Application.Domain.Structure.Repositories
         Task<TEntity> GetUserByIdTrackingAsync(Guid id, CancellationToken cancellationToken = default);
         Task<IEnumerable<TEntity>> ToListAsync(CancellationToken cancellationToken = default);
         Task<IEnumerable<TEntity>> ToListAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
-        Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
+        Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, Expression<Func<TEntity, object>>[] includes = null);
         Task<IEnumerable<TEntity>> ToListTrackingAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
         Task<TEntity> UpdateAsync(TEntity domain, CancellationToken cancellationToken = default);
     }

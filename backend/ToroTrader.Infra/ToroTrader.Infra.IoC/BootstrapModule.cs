@@ -48,7 +48,7 @@ public static class BootstrapModule
 
         services.AddCors(options =>
         {
-            options.AddPolicy("AllowAllOrigins",
+            options.AddPolicy("AllowAll",
                 builder => builder
                     .AllowAnyOrigin()
                     .AllowAnyMethod()

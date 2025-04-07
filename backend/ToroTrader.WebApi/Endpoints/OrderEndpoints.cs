@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ToroTrader.Application.Domain.Structure.JWT;
 using ToroTrader.Application.Features.Orders.CreateOrder;
+using ToroTrader.Application.Features.Orders.GetOrdersByUser;
 
 namespace ToroTrader.WebApi.Endpoints
 {
@@ -22,6 +23,14 @@ namespace ToroTrader.WebApi.Endpoints
                     var retorno = await useCase.ExecuteAsync(currentUser.UserId, request);
 
                     return Results.Ok(retorno);
+                })
+                .RequireAuthorization()
+                .Produces<object>(StatusCodes.Status200OK);
+
+            ordergroup.MapGet("by-user",
+                async ([FromServices] IGetOrdersByUserHandler handler, [FromServices] ICurrentUserService currentUser, [AsParameters] GetOrdersByUserQuery getProductsQuery) =>
+                {
+                    return Results.Ok(await handler.HandleAsync(currentUser.UserId, getProductsQuery));
                 })
                 .RequireAuthorization()
                 .Produces<object>(StatusCodes.Status200OK);

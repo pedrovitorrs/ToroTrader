@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using ToroTrader.Application.Domain.Entities;
 using ToroTrader.Application.Domain.Entities.Base;
 using ToroTrader.Application.Domain.Structure.Pagination;
 using ToroTrader.Application.Domain.Structure.Repositories;
@@ -76,9 +77,17 @@ public class Repository<TEntity>(ToroTraderContext _context) : IRepository<TEnti
         return await _context.Set<TEntity>().FirstOrDefaultAsync(where, cancellationToken);
     }
 
-    public async Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+    public async Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, Expression<Func<TEntity, object>>[] includes =null)
     {
         var elements = _context.Set<TEntity>().AsNoTracking().Where(predicate);
+
+        if (includes != null)
+        {
+            foreach (var include in includes)
+            {
+                elements = elements.Include(include);
+            }
+        }
 
         if (orderBy != null)
         {
