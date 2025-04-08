@@ -1,11 +1,76 @@
+version: '3.4'
+
 services:
   torotrader.webapi:
-    image: ${DOCKER_REGISTRY-}torotraderwebapi
+    image: torotraderwebapi
     build:
-      context: .
-      dockerfile: ToroTrader.WebApi/ToroTrader.WebApi/Dockerfile
+      context: ./backend
+      dockerfile: ToroTrader.WebApi/Dockerfile
+    environment:
+      - TZ=America/Sao_Paulo
+      - ASPNETCORE_ENVIRONMENT=Production
+      - "ConnectionStrings:DefaultConnection=Host=db;Port=5432;Database=torotrader;Username=torotrader;Password=torotrader;"
+      - "ConnectionStrings:RabbitMq=host=localhost;username=rabbitmq;password=rabbitmq;virtualHost=/"
+      - "Jwt:Key=15e0e0beaaac6edb63dc815b5a732481ef2ff6fc7ee412ecbdd43d989f121069"
+      - "Jwt:ExpireInMinutes=60"
+      - "Logging:LogLevel:SerilogDb=Warning"
+      - "Logging:LogLevel:Default=Information"
+      - "Logging:LogLevel:MicrosoftAspNetCore=Warning"
+      - "Logging:LogLevel:System=Warning"
+      - "FilterExceptions=true"
+    ports:
+      - '5550:8080'
+    networks:
+      - backend
+  torotrader.frontend:
+    image: torotraderfrontend
+    restart: always
+    environment:
+      - TZ=America/Sao_Paulo
+      - API_URL=http://torotrader.webapi:8080
+    build:
+      context: ./frontend
+      dockerfile: ./dockerprod.Dockerfile
+    ports:
+      - '8080:80'
+    networks:
+      - backend
   db:
     image: postgres:alpine
+    environment:
+        - POSTGRES_USER=torotrader
+        - POSTGRES_PASSWORD=torotrader
+        - POSTGRES_DB=torotrader
+    restart: always
+    volumes:
+        - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    expose:
+        - 5432
+    networks:
+      - backend
+  rabbit1:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq1"
+    volumes:
+      - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
 
 volumes:
     db_data:
