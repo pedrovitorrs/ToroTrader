@@ -2,6 +2,6 @@
 {
     public interface IEventPublisher<in TMessage> where TMessage : class
     {
-        void Publish(TMessage message);
+        Task Publish(TMessage message);
     }
 }

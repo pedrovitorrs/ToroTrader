@@ -23,8 +23,8 @@ var app = builder.Build();
 app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.MapOpenApi();
 
     app.MapScalarApiReference(options =>
@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
         options.WithTheme(ScalarTheme.DeepSpace)
             .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
     });
-}
+//}
 
 //app.UseHttpsRedirection();
 

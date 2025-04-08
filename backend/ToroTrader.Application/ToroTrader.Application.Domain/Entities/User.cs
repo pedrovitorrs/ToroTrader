@@ -1,4 +1,5 @@
-﻿using ToroTrader.Application.Domain.Entities.Base;
+﻿using System;
+using ToroTrader.Application.Domain.Entities.Base;
 
 namespace ToroTrader.Application.Domain.Entities;
 
@@ -7,8 +8,13 @@ public class User : Entity
     public User(string name, decimal balance, string documentNumber, string accountId = null, string clientId = null)
     {
         this.Name = name ?? throw new ArgumentNullException(nameof(Name));
-        this.AccountId = accountId ?? "0";
-        this.ClientId = clientId ?? "0";
+        this.AccountId = string.IsNullOrWhiteSpace(accountId)
+        ? new Random().Next(1, 5001).ToString()
+        : accountId;
+
+        this.ClientId = string.IsNullOrWhiteSpace(clientId)
+            ? new Random().Next(1, 5001).ToString()
+            : clientId;
         this.Balance = balance;
         this.DocumentNumber = documentNumber ?? throw new ArgumentNullException(nameof(DocumentNumber));
         //this.SetLastAccess();

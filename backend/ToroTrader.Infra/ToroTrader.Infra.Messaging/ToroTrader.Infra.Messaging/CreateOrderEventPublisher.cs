@@ -12,9 +12,9 @@ namespace ToroTrader.Infra.Messaging
             _bus = bus;
         }
 
-        public void Publish(TMessage message)
+        public async Task Publish(TMessage message)
         {
-            _bus.Publish(message);
+            await _bus.PublishAsync(message);
         }
     }
 }

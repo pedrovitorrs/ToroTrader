@@ -16,7 +16,7 @@ namespace ToroTrader.Application.Features.Orders.CreateOrder
 
             var order = await orderRepository.CreateAsync(user);
 
-            orderService.Publish(new PublisherEvent() { Quantity = request.Quantity, UserId = Guid.Parse(userId), ProductId = Guid.Parse(request.ProductId), OrderId = order.Id });
+            await orderService.Publish(new PublisherEvent() { Quantity = request.Quantity, UserId = Guid.Parse(userId), ProductId = Guid.Parse(request.ProductId), OrderId = order.Id });
 
             return order;
         }
