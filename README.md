@@ -14,13 +14,15 @@ O projeto faz uso de banco de dados Postgres, caso o banco estiver local deverá
 
 ## Usage
 
-#### Documentação
+#### 📄 Documentação
 
-Acesse a documentação do navegador:
+- Acesse a documentação do **Backend** via navegador:
 
 ```shell
 http://localhost:5550/scalar/
 ```
+
+- Consulte a documentação específica do [Frontend](https://docuemntcao).
 
 #### Compose Project
 
