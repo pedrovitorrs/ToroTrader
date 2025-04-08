@@ -22,7 +22,7 @@ O projeto faz uso de banco de dados Postgres, caso o banco estiver local deverá
 http://localhost:5550/scalar/
 ```
 
-- Consulte a documentação específica do [Frontend](https://docuemntcao).
+- Consulte a documentação específica do [Frontend](https://github.com/pedrovitorrs/ToroTrader/blob/master/documentacao/Toro%20Test%20-%20Documenta%C3%A7%C3%A3o%20aplica%C3%A7%C3%A3o.pdf).
 
 #### Compose Project
 
