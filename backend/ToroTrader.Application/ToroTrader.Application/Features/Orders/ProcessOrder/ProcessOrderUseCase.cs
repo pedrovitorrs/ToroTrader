@@ -1,0 +1,72 @@
+﻿using ToroTrader.Application.Domain.Entities;
+using ToroTrader.Application.Domain.Events;
+using ToroTrader.Application.Domain.Structure.Repositories;
+
+namespace ToroTrader.Application.Features.Orders.ProcessOrder
+{
+    public class ProcessOrderUseCase(IRepository<Order> orderRepository, IRepository<User> userRepository, IRepository<Product> productRepository) : IProcessOrderUseCase
+    {
+        public async Task<object> ExecuteAsync(PublisherEvent request)
+        {
+            var order = await orderRepository.FirstOrDefaultTrackingAsync(o => o.Id == request.OrderId);
+
+            if (order == null)
+            {
+                throw new Exception("Ordem não encontrada.");
+            }
+
+            var user = await userRepository.FirstOrDefaultTrackingAsync(u => u.Id == order.UserId);
+
+            if (user == null)
+            {
+                order.SetStatus(OrderStatus.Erro, "Usuário não encontrado.");
+                await orderRepository.UpdateAsync(order);
+                return order;
+            }
+
+            var product = await productRepository.FirstOrDefaultTrackingAsync(p => p.Id == order.ProductId);
+
+            if (product == null)
+            {
+                order.SetStatus(OrderStatus.Erro, "Produto não encontrado.");
+                await orderRepository.UpdateAsync(order);
+                return order;
+            }
+
+            if (product.Stock < order.Quantity)
+            {
+                order.SetStatus(OrderStatus.Erro, "Estoque insuficiente.");
+                await orderRepository.UpdateAsync(order);
+                return order;
+            }
+
+            var totalPrice = product.UnitPrice * order.Quantity;
+
+            if (user.Balance < totalPrice)
+            {
+                order.SetStatus(OrderStatus.Erro, "Saldo insuficiente.");
+                await orderRepository.UpdateAsync(order);
+                return order;
+            }
+
+            // Debita saldo do usuário e estoque do produto
+            user.Debit(totalPrice);
+            product.DecreaseStock(order.Quantity);
+
+            order.SetStatus(OrderStatus.Concluido);
+
+            // Atualizações no banco
+            await userRepository.UpdateAsync(user);
+            await productRepository.UpdateAsync(product);
+            await orderRepository.UpdateAsync(order);
+
+            return new
+            {
+                Message = "Ordem processada com sucesso.",
+                OrderId = order.Id,
+                Status = order.Status.ToString()
+            };
+        }
+
+    }
+}

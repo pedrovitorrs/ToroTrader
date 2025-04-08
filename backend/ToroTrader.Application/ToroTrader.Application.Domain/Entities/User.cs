@@ -30,4 +30,15 @@ public class User : Entity
     {
         this.LastAccess = date;
     }
+
+    public void Debit(decimal amount)
+    {
+        if (amount <= 0)
+            throw new ArgumentException("O valor a ser debitado deve ser maior que zero.");
+
+        if (Balance < amount)
+            throw new InvalidOperationException("Saldo insuficiente para realizar a operação.");
+
+        Balance -= amount;
+    }
 }

@@ -30,6 +30,17 @@ namespace ToroTrader.Application.Domain.Entities
             Status = OrderStatus.Erro;
             ErrorMessage = message;
         }
+
+        public void SetStatus(OrderStatus status, string msgErro)
+        {
+            Status = OrderStatus.Concluido;
+            ErrorMessage = msgErro;
+        }
+
+        public void SetStatus(OrderStatus status)
+        {
+            Status = OrderStatus.Concluido;
+        }
     }
 
     public enum OrderStatus

@@ -70,6 +70,6 @@ public static class BootstrapModule
         services.AddTransient<IEventConsumer<PublisherEvent, Guid>, CreateOrderEventConsumer>();
         services.AddScoped<IConsumerSubscriptions, ConsumerSubscriptions>();
         //services.AddScoped<IConsumerSubscriptions, ConsumerSubscriptions>();
-        services.AddSingleton(RabbitHutch.CreateBus("host=localhost;username=rabbitmq;password=rabbitmq;virtualHost=/"));
+        services.AddSingleton(RabbitHutch.CreateBus(configuration.GetConnectionString("RabbitMq")));
     }
 }

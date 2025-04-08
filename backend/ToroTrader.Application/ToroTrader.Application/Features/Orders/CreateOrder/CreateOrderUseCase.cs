@@ -1,8 +1,7 @@
 ﻿using ToroTrader.Application.Domain.Entities;
+using ToroTrader.Application.Domain.Events;
 using ToroTrader.Application.Domain.Structure.Repositories;
 using ToroTrader.Application.Events.Interfaces;
-using ToroTrader.Application.Events;
-using ToroTrader.Application.Domain.Events;
 
 
 namespace ToroTrader.Application.Features.Orders.CreateOrder
@@ -17,7 +16,7 @@ namespace ToroTrader.Application.Features.Orders.CreateOrder
 
             var order = await orderRepository.CreateAsync(user);
 
-            orderService.Publish(new PublisherEvent() { Name = "teste" });
+            orderService.Publish(new PublisherEvent() { Quantity = request.Quantity, UserId = Guid.Parse(userId), ProductId = Guid.Parse(request.ProductId), OrderId = order.Id });
 
             return order;
         }

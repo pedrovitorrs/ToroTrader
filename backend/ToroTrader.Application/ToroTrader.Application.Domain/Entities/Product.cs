@@ -20,5 +20,16 @@ namespace ToroTrader.Application.Domain.Entities
         public string IssuerName { get; private set; }                    // Emissor do Produto
         public decimal UnitPrice { get; private set; }                    // Preço unitário do Produto
         public int Stock { get; private set; }                            // Estoque do produto
+
+        public void DecreaseStock(int quantity)
+        {
+            if (quantity <= 0)
+                throw new ArgumentException("A quantidade deve ser maior que zero.");
+
+            if (Stock < quantity)
+                throw new InvalidOperationException("Estoque insuficiente.");
+
+            Stock -= quantity;
+        }
     }
 }

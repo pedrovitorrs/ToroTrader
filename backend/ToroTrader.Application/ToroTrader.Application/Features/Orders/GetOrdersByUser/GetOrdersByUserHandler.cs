@@ -18,7 +18,7 @@ namespace ToroTrader.Application.Features.Orders.GetOrdersByUser
                     o => o.Product,
                     o => o.User
                 ],
-                orderBy: u => u.OrderByDescending(p => p.Id)
+                orderBy: u => u.OrderByDescending(p => p.CreatedDate)
             );
 
             var items = pagedResult.Items.Select(order => new GetOrdersByUserResponse

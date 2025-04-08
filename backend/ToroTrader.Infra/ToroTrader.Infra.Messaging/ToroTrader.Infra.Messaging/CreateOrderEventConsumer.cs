@@ -7,6 +7,7 @@ using EasyNetQ;
 using Microsoft.Extensions.DependencyInjection;
 using ToroTrader.Application.Domain.Events;
 using ToroTrader.Application.Events.Interfaces;
+using ToroTrader.Application.Features.Orders.ProcessOrder;
 using ToroTrader.Application.Features.Products.GetProducts;
 using ToroTrader.Application.Features.Products.GetProductsTopTraded;
 
@@ -32,14 +33,22 @@ namespace ToroTrader.Infra.Messaging
 
         protected void HandleMessage(PublisherEvent message)
         {
-            using var scope = _serviceProvider.CreateScope();
+            try
+            {
+                using var scope = _serviceProvider.CreateScope();
 
-            var handler = scope.ServiceProvider.GetRequiredService<IGetProductsTopTradedHandler>();
+                var handler = scope.ServiceProvider.GetRequiredService<IProcessOrderUseCase>();
 
-            // Agora o handler e tudo que ele depende estão dentro de um escopo válido
-            var topProducts = handler.HandleAsync(new GetProductsTopTradedQuery() { pageNumber = 1, pageSize = 10 })
-                   .GetAwaiter()
-                   .GetResult();
+                // Agora o handler e tudo que ele depende estão dentro de um escopo válido
+                var topProducts = handler.ExecuteAsync(message)
+                       .GetAwaiter()
+                       .GetResult();
+            }
+            catch (Exception ex)
+            {
+                // Aqui você pode fazer o tratamento de erro que desejar
+                Console.WriteLine($"Erro ao processar a mensagem: {ex.Message}");
+            }
         }
     }
 }
