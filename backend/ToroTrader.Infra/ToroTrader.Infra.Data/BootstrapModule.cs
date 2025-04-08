@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ToroTrader.Application.Domain.Structure.Repositories;
@@ -14,6 +15,9 @@ public static class BootstrapModule
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         services.AddDbContext<ToroTraderContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("Postgres")));
+            options.UseNpgsql(configuration.GetConnectionString("Postgres"))
+            .ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning))
+            .EnableDetailedErrors());
+
     }
 }

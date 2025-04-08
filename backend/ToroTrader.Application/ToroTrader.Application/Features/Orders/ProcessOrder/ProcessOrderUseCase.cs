@@ -19,7 +19,7 @@ namespace ToroTrader.Application.Features.Orders.ProcessOrder
 
             if (user == null)
             {
-                order.SetStatus(OrderStatus.Erro, "Usuário não encontrado.");
+                order.SetError("Usuário não encontrado.");
                 await orderRepository.UpdateAsync(order);
                 return order;
             }
@@ -28,14 +28,14 @@ namespace ToroTrader.Application.Features.Orders.ProcessOrder
 
             if (product == null)
             {
-                order.SetStatus(OrderStatus.Erro, "Produto não encontrado.");
+                order.SetError("Produto não encontrado.");
                 await orderRepository.UpdateAsync(order);
                 return order;
             }
 
             if (product.Stock < order.Quantity)
             {
-                order.SetStatus(OrderStatus.Erro, "Estoque insuficiente.");
+                order.SetError("Estoque insuficiente.");
                 await orderRepository.UpdateAsync(order);
                 return order;
             }
@@ -44,7 +44,7 @@ namespace ToroTrader.Application.Features.Orders.ProcessOrder
 
             if (user.Balance < totalPrice)
             {
-                order.SetStatus(OrderStatus.Erro, "Saldo insuficiente.");
+                order.SetError("Saldo insuficiente.");
                 await orderRepository.UpdateAsync(order);
                 return order;
             }

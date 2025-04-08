@@ -31,15 +31,9 @@ namespace ToroTrader.Application.Domain.Entities
             ErrorMessage = message;
         }
 
-        public void SetStatus(OrderStatus status, string msgErro)
-        {
-            Status = OrderStatus.Concluido;
-            ErrorMessage = msgErro;
-        }
-
         public void SetStatus(OrderStatus status)
         {
-            Status = OrderStatus.Concluido;
+            Status = status;
         }
     }
 

@@ -206,7 +206,7 @@ namespace ToroTrader.Infra.Data.Migrations
                             CreatedDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             ProductId = new Guid("6e113c14-3f44-4f42-bbd3-4ba0cebcb859"),
                             Quantity = 5,
-                            Status = "Pendente",
+                            Status = "Concluido",
                             UpdatedDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("f97e565d-08af-4281-bc11-c0206eae06fa")
                         },
@@ -216,7 +216,7 @@ namespace ToroTrader.Infra.Data.Migrations
                             CreatedDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             ProductId = new Guid("ddc3c57f-1b7d-49a0-af24-917ffac9df9d"),
                             Quantity = 1,
-                            Status = "Pendente",
+                            Status = "Concluido",
                             UpdatedDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("f97e565d-08af-4281-bc11-c0206eae06fa")
                         },
@@ -226,7 +226,7 @@ namespace ToroTrader.Infra.Data.Migrations
                             CreatedDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             ProductId = new Guid("249f360f-2909-41c2-a2f7-a28ab0f68d4a"),
                             Quantity = 2,
-                            Status = "Pendente",
+                            Status = "Concluido",
                             UpdatedDate = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("f97e565d-08af-4281-bc11-c0206eae06fa")
                         });

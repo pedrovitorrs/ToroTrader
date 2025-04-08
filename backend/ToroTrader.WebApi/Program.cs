@@ -34,9 +34,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-//app.UseCors("AllowAllOrigins");
+//app.UseHttpsRedirection();
 
-app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 
