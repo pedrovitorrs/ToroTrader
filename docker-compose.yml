@@ -9,8 +9,12 @@ services:
     environment:
       - TZ=America/Sao_Paulo
       - ASPNETCORE_ENVIRONMENT=Production
-      - "ConnectionStrings:DefaultConnection=Host=db;Port=5432;Database=torotrader;Username=torotrader;Password=torotrader;"
-      - "ConnectionStrings:RabbitMq=host=localhost;username=rabbitmq;password=rabbitmq;virtualHost=/"
+      - "ConnectionStrings:Postgres=Host=db;Port=5432;Database=torotrader;Username=torotrader;Password=torotrader;"
+      - "ConnectionStrings:RabbitMq=host=rabbit1;username=rabbitmq;password=rabbitmq;virtualHost=/"
+      - "RabbitMq:Host=rabbit1"
+      - "RabbitMq:Username=rabbitmq"
+      - "RabbitMq:Password=rabbitmq"
+      - "RabbitMq:VirtualHost=/"
       - "Jwt:Key=15e0e0beaaac6edb63dc815b5a732481ef2ff6fc7ee412ecbdd43d989f121069"
       - "Jwt:ExpireInMinutes=60"
       - "Logging:LogLevel:SerilogDb=Warning"
@@ -18,10 +22,17 @@ services:
       - "Logging:LogLevel:MicrosoftAspNetCore=Warning"
       - "Logging:LogLevel:System=Warning"
       - "FilterExceptions=true"
+      - WAIT_HOSTS=db:5432,rabbit1:5672
+    depends_on:
+      rabbit1:
+        condition: service_healthy
+      db:
+        condition: service_healthy
     ports:
       - '5550:8080'
     networks:
       - backend
+
   torotrader.frontend:
     image: torotraderfrontend
     restart: always
@@ -35,21 +46,28 @@ services:
       - '8080:80'
     networks:
       - backend
+
   db:
     image: postgres:alpine
     environment:
-        - POSTGRES_USER=torotrader
-        - POSTGRES_PASSWORD=torotrader
-        - POSTGRES_DB=torotrader
+      - POSTGRES_USER=torotrader
+      - POSTGRES_PASSWORD=torotrader
+      - POSTGRES_DB=torotrader
     restart: always
     volumes:
-        - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     expose:
-        - 5432
+      - 5432
     networks:
       - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U torotrader"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   rabbit1:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
@@ -67,10 +85,15 @@ services:
       - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
     networks:
       - backend
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   backend:
     name: backend
 
 volumes:
-    db_data:
+  db_data:
