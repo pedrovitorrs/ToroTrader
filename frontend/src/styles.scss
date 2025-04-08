@@ -17,6 +17,12 @@ mat-form-field:not(.mat-mdc-paginator-page-size-select) {
     width: 100% !important;
 }
 
+:root {
+    --p-primary-500: #696cff !important;
+    --p-inputtext-focus-border-color: var(--p-primary-500);
+    --p-inputtext-focus-ring-color: var(--p-primary-500);
+  }
+
 .snack-background-red{
     z-index: 2000 !important;
     div.mdc-snackbar__surface  {

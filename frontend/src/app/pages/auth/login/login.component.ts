@@ -23,8 +23,8 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.loginForm = this.fb.group({
-      accountId: ['', Validators.required],
-      clientId: ['', Validators.required],
+      accountId: ['00001', Validators.required],
+      clientId: ['12454', Validators.required],
     });
   }
 
