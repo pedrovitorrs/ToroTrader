@@ -128,4 +128,23 @@ public class Repository<TEntity>(ToroTraderContext _context) : IRepository<TEnti
     {
         return _context.Set<TEntity>();
     }
+
+    public async Task<TResult> ExecuteInTransactionAsync<TResult>(Func<Task<TResult>> action, CancellationToken cancellationToken = default)
+    {
+        using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+
+        try
+        {
+            var ret = await action();
+
+            await transaction.CommitAsync(cancellationToken);
+
+            return ret;
+        }
+        catch
+        {
+            await transaction.RollbackAsync(cancellationToken);
+            throw;
+        }
+    }
 }

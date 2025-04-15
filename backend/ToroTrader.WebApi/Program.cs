@@ -7,6 +7,7 @@ using Scalar.AspNetCore;
 using System.Text;
 using ToroTrader.Infra.IoC;
 using ToroTrader.Infra.IoC.Extension;
+using ToroTrader.Infra.IoC.Middlewares;
 using ToroTrader.WebApi.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,5 +51,7 @@ app.MapGroup("api/v1/")
     .AddOrderEndpoints("/orders", "Orders");
 
 app.UseRabbitListener();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();

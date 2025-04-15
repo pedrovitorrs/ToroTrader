@@ -21,5 +21,6 @@ namespace ToroTrader.Application.Domain.Structure.Repositories
         Task<PagedResult<TEntity>> ToListAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, Expression<Func<TEntity, object>>[] includes = null);
         Task<IEnumerable<TEntity>> ToListTrackingAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
         Task<TEntity> UpdateAsync(TEntity domain, CancellationToken cancellationToken = default);
+        Task<TResult> ExecuteInTransactionAsync<TResult>(Func<Task<TResult>> action, CancellationToken cancellationToken = default);
     }
 }

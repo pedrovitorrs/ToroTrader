@@ -13,6 +13,7 @@ using ToroTrader.Application.Events.Interfaces;
 using ToroTrader.Application.Events;
 using ToroTrader.Infra.Messaging;
 using ToroTrader.Application.Domain.Events;
+using ToroTrader.Infra.IoC.Middlewares;
 
 namespace ToroTrader.Infra.IoC;
 

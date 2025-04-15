@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ToroTrader.Application.Domain.Entities;
+using ToroTrader.Application.Domain.Exceptions;
 using ToroTrader.Application.Domain.Structure.JWT;
 using ToroTrader.Application.Domain.Structure.Repositories;
 using ToroTrader.Application.Features.Users.CreateUser;
@@ -16,7 +17,7 @@ namespace ToroTrader.Application.Features.Auth.Login
 
             if (user == null || string.IsNullOrEmpty(user.Id.ToString()))
             {
-                throw new Exception("Usuário não encontrado ou ID do usuário inválido.");
+                throw new ValidationException("Usuário não encontrado ou ID do usuário inválido.");
             }
 
             var retorno = await tokenService.GenerateTokenAsync(user);
